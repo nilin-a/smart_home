@@ -4,6 +4,7 @@ import com.smarthome.air.conditioner.service.api.AirConditionerTimerApi
 import com.smarthome.air.conditioner.service.model.AirConditionerTimerDto
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
+import java.util.UUID
 
 @RequestMapping
 class TimerController(
@@ -14,16 +15,16 @@ class TimerController(
         TODO("Not yet implemented")
     }
 
-    override fun deleteAirConditionerTimer(airConditionerId: String): ResponseEntity<Unit> {
+    override fun deleteAirConditionerTimer(airConditionerId: UUID): ResponseEntity<Unit> {
         TODO("Not yet implemented")
     }
 
-    override fun getAirConditionerTimer(airConditionerId: String): ResponseEntity<AirConditionerTimerDto> {
+    override fun getAirConditionerTimer(airConditionerId: UUID): ResponseEntity<AirConditionerTimerDto> {
         TODO("Not yet implemented")
     }
 
     override fun updateAirConditionerTimer(
-        airConditionerId: String,
+        airConditionerId: UUID,
         airConditionerTimerDto: AirConditionerTimerDto
     ): ResponseEntity<AirConditionerTimerDto> {
         TODO("Not yet implemented")

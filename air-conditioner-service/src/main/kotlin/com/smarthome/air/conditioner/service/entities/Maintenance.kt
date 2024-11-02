@@ -5,7 +5,7 @@ import java.time.OffsetDateTime
 
 @Entity
 @Table(name = "air_conditioner_maintenance_schedule")
-data class AirConditionerMaintenanceSchedule(
+data class Maintenance(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +13,7 @@ data class AirConditionerMaintenanceSchedule(
 
     @ManyToOne
     @JoinColumn(name = "air_conditioner_id", nullable = false)
-    val airConditionerInfo: AirConditionerInfo,
+    val info: Info,
 
     @Column(name = "next_maintenance_date", nullable = false)
     val nextMaintenanceDate: OffsetDateTime,

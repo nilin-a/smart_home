@@ -5,7 +5,7 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "air_conditioner_info")
-data class AirConditionerInfo(
+data class Info(
 
     @Id
     @Column(name = "air_conditioner_id")
@@ -24,14 +24,14 @@ data class AirConditionerInfo(
     val model: String,
 
     @OneToMany(mappedBy = "airConditionerInfo", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    val states: List<AirConditionerState> = emptyList(),
+    val states: List<State> = emptyList(),
 
     @OneToMany(mappedBy = "airConditionerInfo", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    val timers: List<AirConditionerTimer> = emptyList(),
+    val timers: List<Timer> = emptyList(),
 
     @OneToMany(mappedBy = "airConditionerInfo", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    val maintenanceSchedules: List<AirConditionerMaintenanceSchedule> = emptyList(),
+    val maintenanceSchedules: List<Maintenance> = emptyList(),
 
     @OneToMany(mappedBy = "airConditionerInfo", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    val accessList: List<AirConditionerAccess> = emptyList()
+    val accessList: List<Access> = emptyList()
 )

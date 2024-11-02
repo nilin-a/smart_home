@@ -5,14 +5,14 @@ import java.util.UUID
 
 @Entity
 @Table(name = "air_conditioner_access")
-data class AirConditionerAccess(
+data class Access(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
     @ManyToOne
     @JoinColumn(name = "air_conditioner_id", nullable = false)
-    val airConditionerInfo: AirConditionerInfo,
+    val info: Info,
 
     @Column(name = "user_id", nullable = false)
     val userId: UUID,

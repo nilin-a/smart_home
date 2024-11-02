@@ -52,6 +52,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       responses:
@@ -86,6 +87,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       requestBody:
@@ -126,6 +128,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       responses:
@@ -191,6 +194,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       responses:
@@ -225,6 +229,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       requestBody:
@@ -300,6 +305,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       responses:
@@ -334,6 +340,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       requestBody:
@@ -374,6 +381,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       responses:
@@ -439,6 +447,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       responses:
@@ -473,6 +482,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       requestBody:
@@ -513,6 +523,7 @@ paths:
           name: airConditionerId
           schema:
             type: string
+            format: uuid
           required: true
           description: Уникальный идентификатор устройства кондиционера.
       responses:

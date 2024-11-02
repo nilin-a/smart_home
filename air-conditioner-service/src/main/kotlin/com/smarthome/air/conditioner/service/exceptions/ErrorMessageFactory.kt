@@ -1,4 +1,4 @@
-package com.smarthome.air.conditioner.service.excpetions
+package com.smarthome.air.conditioner.service.exceptions
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.i18n.LocaleContextHolder

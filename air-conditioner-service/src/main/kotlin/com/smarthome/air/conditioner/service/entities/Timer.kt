@@ -5,14 +5,14 @@ import java.time.OffsetDateTime
 
 @Entity
 @Table(name = "air_conditioner_timer")
-data class AirConditionerTimer(
+data class Timer(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val timerId: Long = 0,
 
     @ManyToOne
     @JoinColumn(name = "air_conditioner_id", nullable = false)
-    val airConditionerInfo: AirConditionerInfo,
+    val info: Info,
 
     @Column(name = "start_time", nullable = false)
     val startTime: OffsetDateTime,

@@ -5,7 +5,7 @@ import java.time.OffsetDateTime
 
 @Entity
 @Table(name = "air_conditioner_state")
-data class AirConditionerState(
+data class State(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +13,7 @@ data class AirConditionerState(
 
     @ManyToOne
     @JoinColumn(name = "air_conditioner_id", nullable = false)
-    val airConditionerInfo: AirConditionerInfo,
+    val info: Info,
 
     @Enumerated(EnumType.STRING)
     @Column(name = "mode", nullable = false)

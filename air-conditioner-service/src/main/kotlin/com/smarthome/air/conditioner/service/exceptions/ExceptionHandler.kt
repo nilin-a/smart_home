@@ -1,4 +1,4 @@
-package com.smarthome.air.conditioner.service.excpetions
+package com.smarthome.air.conditioner.service.exceptions
 
 import com.smarthome.air.conditioner.service.model.ErrorDto
 import org.springframework.http.HttpStatus
