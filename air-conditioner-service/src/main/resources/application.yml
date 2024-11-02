@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/air_conditioners_database
+    username: postgres
+    password: user
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  metrics:
+    export:
+      prometheus:
+        enabled: true
