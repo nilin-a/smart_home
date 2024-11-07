@@ -584,6 +584,10 @@ components:
           type: string
           format: uuid
           description: Уникальный идентификатор устройства.
+        roomId:
+          type: string
+          format: uuid
+          description: Идентификатор комнаты, в которой находится кондиционер.
         name:
           type: string
           description: Имя кондиционера (например, "Кондиционер в спальне").

@@ -11,6 +11,9 @@ data class Info(
     @Column(name = "air_conditioner_id")
     val airConditionerId: UUID = UUID.randomUUID(),
 
+    @Column(name = "room_id")
+    val roomId: UUID,
+
     @Column(name = "name", nullable = false)
     val name: String,
 
