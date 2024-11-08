@@ -1,6 +1,6 @@
 package com.smarthome.air.conditioner.service.services
 
-import com.smarthome.air.conditioner.service.model.AirConditionerInfoDto
+import com.smarthome.air.conditioner.service.model.AirConditionerInformationDto
 import com.smarthome.air.conditioner.service.repositories.AirConditionerInformationRepository
 import org.springframework.stereotype.Service
 import java.util.UUID
@@ -10,7 +10,7 @@ class AirConditionerInformationService(
     private val infoRepository: AirConditionerInformationRepository,
 ) {
 
-    fun createAirConditionerInfo(info: AirConditionerInfoDto) : AirConditionerInfoDto  {
+    fun createAirConditionerInfo(info: AirConditionerInformationDto) : AirConditionerInformationDto  {
         TODO()
         /*
             = infoMapper.toDto(
@@ -20,7 +20,7 @@ class AirConditionerInformationService(
     }
 
 
-    fun getAirConditionerInfo(airConditionerId: UUID) : AirConditionerInfoDto {
+    fun getAirConditionerInfo(airConditionerId: UUID) : AirConditionerInformationDto {
         TODO()
         /*
         = infoMapper.toDto(
@@ -32,7 +32,7 @@ class AirConditionerInformationService(
          */
     }
 
-    fun updateAirConditionerInfo(airConditionerId: UUID, info: AirConditionerInfoDto): AirConditionerInfoDto {
+    fun updateAirConditionerInfo(airConditionerId: UUID, info: AirConditionerInformationDto): AirConditionerInformationDto {
         /*if (infoRepository.existsById(airConditionerId)) {
             return infoMapper.toDto(
                 infoRepository.save(infoMapper.toEntity(info.copy(airConditionerId = airConditionerId)))

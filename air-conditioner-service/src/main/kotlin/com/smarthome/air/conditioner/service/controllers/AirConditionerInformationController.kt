@@ -1,7 +1,6 @@
 package com.smarthome.air.conditioner.service.controllers
 
 import com.smarthome.air.conditioner.service.api.AirConditionerInfoApi
-import com.smarthome.air.conditioner.service.model.AirConditionerInfoDto
 import com.smarthome.air.conditioner.service.services.AirConditionerInformationService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
@@ -10,9 +9,10 @@ import java.util.UUID
 @RestController
 class AirConditionerInformationController(
     private val airConditionerInformationService: AirConditionerInformationService
-) : AirConditionerInfoApi {
+) {
 
-    override fun createAirConditionerInfo(airConditionerInfoDto: AirConditionerInfoDto) =
+    //TODO()
+    /*override fun createAirConditionerInfo(airConditionerInfoDto: AirConditionerInfoDto) =
         ResponseEntity.ok(
             airConditionerInformationService.createAirConditionerInfo(airConditionerInfoDto)
         )
@@ -31,4 +31,6 @@ class AirConditionerInformationController(
         ResponseEntity.ok(
             airConditionerInformationService.deleteAirConditionerInfo(airConditionerId)
         )
+
+     */
 }

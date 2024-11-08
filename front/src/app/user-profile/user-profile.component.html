@@ -1,0 +1,32 @@
+<div class="profile-card">
+  <div class="profile-field">
+    <label>Логин:</label>
+    <span (click)="editField('username')">{{ user.username }}</span>
+    <button (click)="editField('username')">Изменить</button>
+  </div>
+
+  <div class="profile-field">
+    <label>Имя:</label>
+    <span (click)="editField('name')">{{ user.name }}</span>
+    <button (click)="editField('name')">Изменить</button>
+  </div>
+
+  <div class="profile-field">
+    <label>Пароль:</label>
+    <span (click)="editField('password')">********</span>
+    <button (click)="editField('password')">Изменить</button>
+  </div>
+
+  <div *ngIf="editingField" class="edit-form" (click)="closeEditForm()">
+    <form (ngSubmit)="saveChanges()">
+      <label>{{ editingField === 'password' ? 'Новый пароль' : 'Изменение ' + editingField }}</label>
+      <input
+        type="{{ editingField === 'password' ? 'password' : 'text' }}"
+        [(ngModel)]="formValue"
+        placeholder="{{ getPlaceholder() }}"
+        (focus)="clearPlaceholder()"
+      />
+      <button type="submit">Сохранить</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<app-header (profileClicked)="toggleProfile()"></app-header>
+
+<!-- Отображение компонента профиля только при showProfile = true -->
+<app-user-profile *ngIf="showProfile"></app-user-profile>

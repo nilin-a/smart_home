@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <div class="menu-item">
+    <a (click)="openProfile()">Профиль</a>
+  </div>
+
+  <div class="menu-item">
+    <button (click)="addDevice()">Добавить устройство</button>
+  </div>
+
+  <div class="menu-item" (mouseenter)="showDevicesMenu = true" (mouseleave)="showDevicesMenu = false">
+    <button>Устройства</button>
+    <ul *ngIf="showDevicesMenu" class="dropdown-menu">
+      <li><a (click)="openAllDevices()">Все устройства</a></li>
+      <li *ngFor="let device of devices" (click)="openDevice(device.id)">
+        <a>{{ device.name }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="menu-item logout">
+    <button (click)="logout()">Выход</button>
+  </div>
+</nav>

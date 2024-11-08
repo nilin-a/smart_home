@@ -41,9 +41,6 @@ data class AirConditionerInformation(
 
     @Column(name = "state_updated_at", nullable = false)
     val stateUpdatedAt: OffsetDateTime,
-
-    @Column(name = "usersWithAccess")
-    val usersWithAccess: List<UUID>? = null,
 ) {
     enum class Mode { COOLING, HEATING }
     enum class FanSpeed { LOW, MEDIUM, HIGH }

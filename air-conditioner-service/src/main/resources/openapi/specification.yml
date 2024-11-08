@@ -5,6 +5,36 @@ info:
   description: API для управления кондиционерами в умных домах.
 
 paths:
+  /air-conditioners:
+    get:
+      summary: Получить список всех кондиционеров пользователя по его айди
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - GetAllAirConditionersByUserId
+      operationId: getAirConditioners
+      responses:
+        '200':
+          description: Информация о кондиционере.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AirConditionerInformation'
+        '400':
+          description: Ошибка в данных запроса.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Ошибка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
   /air-conditioners-info:
     post:
       summary: Добавить новый кондиционер.
