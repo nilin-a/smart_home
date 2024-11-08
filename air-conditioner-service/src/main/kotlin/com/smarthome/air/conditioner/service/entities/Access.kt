@@ -1,25 +1,27 @@
 package com.smarthome.air.conditioner.service.entities
 
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
+import jakarta.persistence.Table
 import java.util.UUID
 
 @Entity
-@Table(name = "air_conditioner_access")
+@Table(name = "user_access")
 data class Access(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
 
-    @ManyToOne
-    @JoinColumn(name = "air_conditioner_id", nullable = false)
-    val info: Info,
+    @Id
+    @GeneratedValue
+    val id: Long,
 
     @Column(name = "user_id", nullable = false)
     val userId: UUID,
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "access_type", nullable = false)
-    val accessType: AccessType
-) {
-    enum class AccessType { OWNER, GUEST }
-}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "air_conditioner_id", nullable = false)
+    val airConditionerInformation: AirConditionerInformation,
+)

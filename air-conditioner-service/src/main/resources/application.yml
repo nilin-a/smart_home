@@ -8,12 +8,17 @@ spring:
     hibernate:
       ddl-auto: update
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health, info, metrics
-  metrics:
-    export:
-      prometheus:
-        enabled: true
+
+#management:
+  #endpoints:
+    #web:
+      #exposure:
+        #include: health, info, metrics
+  #metrics:
+    #export:
+      #prometheus:
+        #enabled: true
+
+error-factory:
+  code: "app"
+  message: "app"

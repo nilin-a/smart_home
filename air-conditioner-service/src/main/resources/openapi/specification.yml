@@ -18,14 +18,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AirConditionerInfo'
+              $ref: '#/components/schemas/AirConditionerInformation'
       responses:
         '201':
           description: Кондиционер успешно добавлен.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerInfo'
+                $ref: '#/components/schemas/AirConditionerInformation'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -61,7 +61,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerInfo'
+                $ref: '#/components/schemas/AirConditionerInformation'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -95,14 +95,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AirConditionerInfo'
+              $ref: '#/components/schemas/AirConditionerInformation'
       responses:
         '200':
           description: Кондиционер успешно обновлён.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerInfo'
+                $ref: '#/components/schemas/AirConditionerInformation'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -160,14 +160,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AirConditionerState'
+              $ref: '#/components/schemas/AirConditionerInformation'
       responses:
         '201':
           description: Состояние кондиционера успешно обновлено.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerState'
+                $ref: '#/components/schemas/AirConditionerInformation'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -203,7 +203,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerState'
+                $ref: '#/components/schemas/AirConditionerInformation'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -218,7 +218,7 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     put:
-      summary: Обновить текущее состояние кондиционера.
+      summary: Обновить состояние кондиционера.
       security:
         - BearerAuth: [ ]
       tags:
@@ -237,14 +237,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AirConditionerState'
+              $ref: '#/components/schemas/AirConditionerInformation'
       responses:
         '200':
           description: Состояние кондиционера успешно обновлено.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerState'
+                $ref: '#/components/schemas/AirConditionerInformation'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -257,125 +257,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
-  /air-conditioners-timer:
-    post:
-      summary: Установить новый таймер для кондиционера.
-      security:
-        - BearerAuth: [ ]
-      tags:
-        - AirConditionerTimer
-      operationId: createAirConditionerTimer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AirConditionerTimer'
-      responses:
-        '201':
-          description: Таймер кондиционера успешно установлен.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AirConditionerTimer'
-        '400':
-          description: Ошибка в данных запроса.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Ошибка сервера.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
-  /air-conditioners-timer/{airConditionerId}:
-    get:
-      summary: Получить информацию о таймере кондиционера.
-      security:
-        - BearerAuth: [ ]
-      tags:
-        - AirConditionerTimer
-      operationId: getAirConditionerTimer
-      parameters:
-        - in: path
-          name: airConditionerId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: Уникальный идентификатор устройства кондиционера.
-      responses:
-        '200':
-          description: Информация о таймере кондиционера.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AirConditionerTimer'
-        '400':
-          description: Ошибка в данных запроса.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Ошибка сервера.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
-    put:
-      summary: Обновить таймер кондиционера.
-      security:
-        - BearerAuth: [ ]
-      tags:
-        - AirConditionerTimer
-      operationId: updateAirConditionerTimer
-      parameters:
-        - in: path
-          name: airConditionerId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: Уникальный идентификатор устройства кондиционера.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AirConditionerTimer'
-      responses:
-        '200':
-          description: Таймер кондиционера успешно обновлён.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AirConditionerTimer'
-        '400':
-          description: Ошибка в данных запроса.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Ошибка сервера.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
     delete:
-      summary: Удалить таймер кондиционера.
+      summary: Удалить состояние кондиционера (при удалении кондиционера).
       security:
         - BearerAuth: [ ]
       tags:
-        - AirConditionerTimer
-      operationId: deleteAirConditionerTimer
+        - AirConditionerState
+      operationId: deleteAirConditionerState
       parameters:
         - in: path
           name: airConditionerId
@@ -386,149 +274,7 @@ paths:
           description: Уникальный идентификатор устройства кондиционера.
       responses:
         '204':
-          description: Таймер кондиционера успешно удалён.
-        '400':
-          description: Ошибка в данных запроса.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Ошибка сервера.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
-  /air-conditioners-maintenance:
-    post:
-      summary: Добавить новый график обслуживания кондиционера.
-      security:
-        - BearerAuth: [ ]
-      tags:
-        - AirConditionerMaintenance
-      operationId: createAirConditionerMaintenance
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AirConditionerMaintenanceSchedule'
-      responses:
-        '201':
-          description: График обслуживания кондиционера успешно добавлен.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AirConditionerMaintenanceSchedule'
-        '400':
-          description: Ошибка в данных запроса.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Ошибка сервера.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
-  /air-conditioners-maintenance/{airConditionerId}:
-    get:
-      summary: Получить график обслуживания кондиционера.
-      security:
-        - BearerAuth: [ ]
-      tags:
-        - AirConditionerMaintenance
-      operationId: getAirConditionerMaintenance
-      parameters:
-        - in: path
-          name: airConditionerId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: Уникальный идентификатор устройства кондиционера.
-      responses:
-        '200':
-          description: Информация о графике обслуживания кондиционера.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AirConditionerMaintenanceSchedule'
-        '400':
-          description: Ошибка в данных запроса.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Ошибка сервера.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
-    put:
-      summary: Обновить график обслуживания кондиционера.
-      security:
-        - BearerAuth: [ ]
-      tags:
-        - AirConditionerMaintenance
-      operationId: updateAirConditionerMaintenance
-      parameters:
-        - in: path
-          name: airConditionerId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: Уникальный идентификатор устройства кондиционера.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AirConditionerMaintenanceSchedule'
-      responses:
-        '200':
-          description: График обслуживания кондиционера успешно обновлён.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AirConditionerMaintenanceSchedule'
-        '400':
-          description: Ошибка в данных запроса.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Ошибка сервера.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
-    delete:
-      summary: Удалить график обслуживания кондиционера.
-      security:
-        - BearerAuth: [ ]
-      tags:
-        - AirConditionerMaintenance
-      operationId: deleteAirConditionerMaintenance
-      parameters:
-        - in: path
-          name: airConditionerId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: Уникальный идентификатор устройства кондиционера.
-      responses:
-        '204':
-          description: График обслуживания кондиционера успешно удалён.
+          description: Кондиционер успешно удалён.
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -544,50 +290,13 @@ paths:
       
 components:
   schemas:
-    AirConditionerState:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Уникальный идентификатор записи о состоянии.
-        airConditionerId:
-          type: string
-          format: uuid
-          description: Идентификатор кондиционера, соответствующий его записи в AirConditionerInfo.
-        mode:
-          type: string
-          enum: [COOLING, HEATING]
-          description: Режим работы кондиционера (охлаждение или нагрев).
-        temperature:
-          type: integer
-          minimum: 16
-          maximum: 28
-          description: Текущая установленная температура (от 16 до 28).
-        fanSpeed:
-          type: string
-          enum: [LOW, MEDIUM, HIGH]
-          description: Скорость обдува (низкая, средняя, высокая).
-        status:
-          type: string
-          enum: [ON, OFF, STAND_BY]
-          description: Текущий статус кондиционера.
-        stateUpdatedAt:
-          type: string
-          format: date-time
-          description: Временная метка последнего изменения состояния.
-
-    AirConditionerInfo:
+    AirConditionerInformation:
       type: object
       properties:
         airConditionerId:
           type: string
           format: uuid
           description: Уникальный идентификатор устройства.
-        roomId:
-          type: string
-          format: uuid
-          description: Идентификатор комнаты, в которой находится кондиционер.
         name:
           type: string
           description: Имя кондиционера (например, "Кондиционер в спальне").
@@ -600,46 +309,27 @@ components:
         model:
           type: string
           description: Модель устройства.
-
-    AirConditionerTimer:
-      type: object
-      properties:
-        airConditionerId:
+        mode:
           type: string
-          format: uuid
-          description: Идентификатор устройства, для которого установлен таймер.
-        startTime:
-          type: string
-          format: date-time
-          description: Время включения кондиционера в серверной таймзоне.
-        stopTime:
-          type: string
-          format: date-time
-          nullable: true
-          description: Время выключения кондиционера, если установлено (может быть null).
-        recurrence:
-          type: string
-          enum: [DAILY, WEEKLY]
-          description: Периодичность выполнения таймера (DAILY, WEEKLY, может быть null).
-
-    AirConditionerMaintenanceSchedule:
-      type: object
-      properties:
-        airConditionerId:
-          type: string
-          format: uuid
-          description: Идентификатор кондиционера.
-        nextMaintenanceDate:
-          type: string
-          format: date
-          description: Дата следующего запланированного обслуживания.
-        intervalDays:
+          enum: [ COOLING, HEATING ]
+          description: Режим работы кондиционера (охлаждение или нагрев).
+        temperature:
           type: integer
-          description: Периодичность обслуживания в днях.
-        maintenanceStatus:
+          minimum: 16
+          maximum: 28
+          description: Текущая установленная температура (от 16 до 28).
+        fanSpeed:
           type: string
-          enum: [COMPLETED, POSTPONED, CANCELLED, SCHEDULED]
-          description: Статус проведенного обслуживания (выполнено, перенесено, отменено, запланировано).
+          enum: [ LOW, MEDIUM, HIGH ]
+          description: Скорость обдува (низкая, средняя, высокая).
+        status:
+          type: string
+          enum: [ ON, OFF ]
+          description: Текущий статус кондиционера.
+        stateUpdatedAt:
+          type: string
+          format: date-time
+          description: Временная метка последнего изменения состояния.
 
     Error:
       type: object
