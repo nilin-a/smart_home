@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.smart.home</groupId>
-	<artifactId>user-info-service</artifactId>
+	<artifactId>coffee-machine-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user-info-service</name>
-	<description>Service for user information</description>
+	<name>coffee-machine-service</name>
+	<description>Service for coffee machine</description>
 	<url/>
 	<licenses>
 		<license/>

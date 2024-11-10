@@ -1,11 +1,11 @@
-package com.smart.home.user_info_service
+package com.smart.home.coffee.machine.service
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class UserInfoServiceApplication
+class CoffeeMachineServiceApplication
 
 fun main(args: Array<String>) {
-	runApplication<UserInfoServiceApplication>(*args)
+	runApplication<CoffeeMachineServiceApplication>(*args)
 }

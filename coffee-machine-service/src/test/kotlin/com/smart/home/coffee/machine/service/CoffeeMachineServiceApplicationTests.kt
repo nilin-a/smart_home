@@ -1,10 +1,10 @@
-package com.smart.home.user_info_service
+package com.smart.home.coffee.machine.service
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class UserInfoServiceApplicationTests {
+class CoffeeMachineServiceApplicationTests {
 
 	@Test
 	fun contextLoads() {
