@@ -15,9 +15,6 @@ data class AirConditionerInformation(
     @Column(name = "name", nullable = false)
     val name: String,
 
-    @Column(name = "serial_number", nullable = false)
-    val serialNumber: String,
-
     @Column(name = "manufacturer", nullable = false)
     val manufacturer: String,
 

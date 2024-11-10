@@ -330,9 +330,6 @@ components:
         name:
           type: string
           description: Имя кондиционера (например, "Кондиционер в спальне").
-        serialNumber:
-          type: string
-          description: Серийный номер кондиционера.
         manufacturer:
           type: string
           description: Производитель устройства (например, LG, Samsung).
