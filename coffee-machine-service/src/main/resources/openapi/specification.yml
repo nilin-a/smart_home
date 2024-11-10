@@ -1,0 +1,336 @@
+openapi: 3.0.3
+info:
+  title: Air Conditioner Service API
+  version: 1.0.0
+  description: API для управления кондиционерами в умных домах.
+
+paths:
+  /coffee-machine/all:
+    get:
+      summary: Получить список всех кофемашин пользователя по его айди
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - GetAllCoffeeMachinesByUserId
+      operationId: getCoffeeMachines
+      responses:
+        '200':
+          description: Список кофемашин пользователя.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CoffeeMachineFromTotalListResponse'
+        '400':
+          description: Ошибка в данных запроса.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Ошибка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /coffee-machine:
+    post:
+      summary: Добавить новую кофемашину.
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - AddCoffeeMachine
+      operationId: addCoffeeMachine
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoffeeMachineCreationDataRequest'
+      responses:
+        '201':
+          description: Кофемашина успешно добавлена.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoffeeMachineFromTotalListResponse'
+        '400':
+          description: Ошибка в данных запроса.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Ошибка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /coffee-machine/{coffeeMachineId}/info:
+    get:
+      summary: Получить информацию о кофемашине.
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - CoffeeMachineInfo
+      operationId: getCoffeeMachineInfo
+      parameters:
+        - in: path
+          name: coffeeMachineId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Уникальный идентификатор устройства кофемашины.
+      responses:
+        '200':
+          description: Информация о кофемашине.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoffeeMachineInfoResponse'
+        '400':
+          description: Ошибка в данных запроса.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Ошибка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Обновить информацию о кофемашине.
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - CoffeeMachineInfo
+      operationId: updateCoffeeMachineInfo
+      parameters:
+        - in: path
+          name: coffeeMachineId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Уникальный идентификатор устройства кофемашины.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoffeeMachineCreationDataRequest'
+      responses:
+        '200':
+          description: Кондиционер успешно обновлён.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoffeeMachineInfoResponse'
+        '400':
+          description: Ошибка в данных запроса.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Ошибка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /coffee-machine/{coffeeMachineId}/state:
+    get:
+      summary: Получить текущее состояние кофемашины.
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - CoffeeMachineState
+      operationId: getCoffeeMachineState
+      parameters:
+        - in: path
+          name: coffeeMachineId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Уникальный идентификатор устройства кофемашины.
+      responses:
+        '200':
+          description: Текущее состояние кофемашины.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoffeeMachine'
+        '400':
+          description: Ошибка в данных запроса.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Ошибка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /coffee-machine/access/{coffeeMachineId}:
+    post:
+
+    delete:
+
+    put:
+      summary: Установить состояние кофемашины.
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - CoffeeMachineState
+      operationId: setCoffeeMachineState
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoffeeMachineStateRequest'
+      responses:
+        '201':
+          description: Состояние кондиционера успешно обновлено.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoffeeMachine'
+        '400':
+          description: Ошибка в данных запроса.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Ошибка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      
+components:
+  schemas:
+    CoffeeMachine:
+      type: object
+      properties:
+        coffeeMachineId:
+          type: string
+          format: uuid
+          description: Уникальный идентификатор устройства.
+        name:
+          type: string
+          description: Имя кошемашины (например, "Кофемашина на кухне").
+        manufacturer:
+          type: string
+          description: Производитель устройства (например, LG, Samsung).
+        model:
+          type: string
+          description: Модель устройства.
+        mode:
+          type: string
+          enum: [ ESPRESSO, AMERICANO, CAPPUCCINO, LATTE, HOT WATER, MILK]
+          description: Режим работы кофемашины (эспрессо, американо, капучино, латте, горячая вода, молоко).
+        temperature:
+          type: string
+          enum: [ NORMAL, HIGH, HOT]
+          description: Температура напитка (нормальная, высокая, горячая).
+        size:
+          type: string
+          enum: [ SMALL, MEDIUM, BIG, SINGLE_ESPRESSO, DOUBLE_ESPRESSO ]
+          description: Объем напитка (маленький, средний, большой, одна порция эспрессо, две порции эспрессо)
+        status:
+          type: string
+          enum: [ ON, OFF ]
+          description: Текущий статус кофемашины.
+        stateUpdatedAt:
+          type: string
+          format: date-time
+          description: Временная метка последнего изменения состояния.
+    CoffeeMachineFromTotalListResponse:
+      type: object
+      properties:
+        coffeeMachineId:
+          type: string
+          format: uuid
+          description: Уникальный идентификатор устройства.
+        name:
+          type: string
+          description: Имя кошемашины (например, "Кофемашина на кухне").
+        manufacturer:
+          type: string
+          description: Производитель устройства (например, LG, Samsung).
+        model:
+          type: string
+          description: Модель устройства.
+        status:
+          type: string
+          enum: [ ON, OFF ]
+          description: Текущий статус кофемашины.
+        stateUpdatedAt:
+          type: string
+          format: date-time
+          description: Временная метка последнего изменения состояния.
+    CoffeeMachineCreationDataRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Имя кошемашины (например, "Кофемашина на кухне").
+        manufacturer:
+          type: string
+          description: Производитель устройства (например, LG, Samsung).
+        model:
+          type: string
+          description: Модель устройства.
+    CoffeeMachineInfoResponse:
+      type: object
+      properties:
+        coffeeMachineId:
+          type: string
+          format: uuid
+          description: Уникальный идентификатор устройства.
+        name:
+          type: string
+          description: Имя кошемашины (например, "Кофемашина на кухне").
+        manufacturer:
+          type: string
+          description: Производитель устройства (например, LG, Samsung).
+        model:
+          type: string
+          description: Модель устройства.
+    CoffeeMachineStateRequest:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum: [ ESPRESSO, AMERICANO, CAPPUCCINO, LATTE, HOT WATER, MILK ]
+          description: Режим работы кофемашины (эспрессо, американо, капучино, латте, горячая вода, молоко).
+        temperature:
+          type: string
+          enum: [ NORMAL, HIGH, HOT ]
+          description: Температура напитка (нормальная, высокая, горячая).
+        size:
+          type: string
+          enum: [ SMALL, MEDIUM, BIG, SINGLE_ESPRESSO, DOUBLE_ESPRESSO ]
+          description: Объем напитка (маленький, средний, большой, одна порция эспрессо, две порции эспрессо)
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Код ошибки.
+        message:
+          type: string
+          description: Описание ошибки.

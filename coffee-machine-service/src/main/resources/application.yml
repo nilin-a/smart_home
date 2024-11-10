@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/coffee_machines_database
+    username: postgres
+    password: user
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+error-factory:
+  code: "app"
+  message: "app"
