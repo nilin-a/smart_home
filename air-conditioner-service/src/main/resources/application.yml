@@ -1,4 +1,9 @@
+server:
+  port: 8081
+
 spring:
+  application:
+    name: air-conditioner-service
   datasource:
     url: jdbc:postgresql://localhost:5432/air_conditioners_database
     username: postgres
@@ -8,6 +13,10 @@ spring:
     hibernate:
       ddl-auto: update
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
 
 #management:
   #endpoints:

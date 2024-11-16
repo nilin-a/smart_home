@@ -13,8 +13,19 @@ from requests import (
 from auth import get_current_user_id
 from uuid import UUID
 from models import KettleCreate, KettleStateUpdate, KettleInfoUpdate
+from py_eureka_client.eureka_client import EurekaClient
 
 app = FastAPI()
+
+# Конфигурация Eureka клиента
+eureka_client = EurekaClient(
+    eureka_server="http://localhost:8761/eureka",
+    app_name="electric-kettle-service",
+    instance_port=8083,
+    instance_ip="localhost",
+    health_check_url="/health",
+    instance_id="electric-kettle-service-1",
+)
 
 
 async def get_session() -> AsyncSession:

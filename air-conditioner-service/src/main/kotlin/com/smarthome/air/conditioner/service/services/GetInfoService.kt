@@ -13,6 +13,7 @@ class GetInfoService(
 ) {
 
     fun getAllAirConditionersByUserId(userId: UUID): List<AirConditionerInformationDto> {
-        return accessRepository.findAllByUserId(userId).map { it.airConditionerInformation }
+        //return accessRepository.findAllByUserId(userId).map { it.airConditionerInformation }
+        TODO()
     }
 }

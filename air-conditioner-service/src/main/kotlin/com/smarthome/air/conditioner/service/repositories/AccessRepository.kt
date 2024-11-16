@@ -7,6 +7,6 @@ import java.util.*
 
 @Repository
 interface AccessRepository : JpaRepository<Access, Long> {
-    abstract fun findAllByUserId(userId: UUID): List<Access>
+    fun findAllByUserId(userId: UUID): List<Access>
 
 }
