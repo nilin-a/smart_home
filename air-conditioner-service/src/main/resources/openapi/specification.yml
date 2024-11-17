@@ -8,8 +8,8 @@ paths:
   /air-conditioners:
     get:
       summary: Получить список всех кондиционеров пользователя по его айди
-      security:
-        - BearerAuth: [ ]
+      #security:
+        #- BearerAuth: [ ]
       tags:
         - GetAllAirConditionersByUserId
       operationId: getAirConditioners
@@ -21,7 +21,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/AirConditionerInformation'
+                  $ref: '#/components/schemas/AirConditionerInfo'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -38,24 +38,24 @@ paths:
   /air-conditioners-info:
     post:
       summary: Добавить новый кондиционер.
-      security:
-        - BearerAuth: [ ]
+      #security:
+        #- BearerAuth: [ ]
       tags:
-        - AirConditionerInfo
-      operationId: createAirConditionerInfo
+        - AddAirConditioner
+      operationId: addAirConditionerInfo
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AirConditionerInformation'
+              $ref: '#/components/schemas/AirConditionerInfo'
       responses:
         '201':
           description: Кондиционер успешно добавлен.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerInformation'
+                $ref: '#/components/schemas/AirConditionerFullInfo'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -91,7 +91,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerInformation'
+                $ref: '#/components/schemas/AirConditionerFullInfo'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -125,14 +125,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AirConditionerInformation'
+              $ref: '#/components/schemas/AirConditionerFullInfo'
       responses:
         '200':
           description: Кондиционер успешно обновлён.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerInformation'
+                $ref: '#/components/schemas/AirConditionerFullInfo'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -190,14 +190,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AirConditionerInformation'
+              $ref: '#/components/schemas/AirConditionerFullInfo'
       responses:
         '201':
           description: Состояние кондиционера успешно обновлено.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerInformation'
+                $ref: '#/components/schemas/AirConditionerFullInfo'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -233,7 +233,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerInformation'
+                $ref: '#/components/schemas/AirConditionerFullInfo'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -267,14 +267,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AirConditionerInformation'
+              $ref: '#/components/schemas/AirConditionerFullInfo'
       responses:
         '200':
           description: Состояние кондиционера успешно обновлено.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AirConditionerInformation'
+                $ref: '#/components/schemas/AirConditionerFullInfo'
         '400':
           description: Ошибка в данных запроса.
           content:
@@ -320,7 +320,24 @@ paths:
       
 components:
   schemas:
-    AirConditionerInformation:
+    AirConditionerInfo:
+      type: object
+      properties:
+        airConditionerId:
+          type: string
+          format: uuid
+          description: Уникальный идентификатор устройства.
+        name:
+          type: string
+          description: Имя кондиционера (например, "Кондиционер в спальне").
+        manufacturer:
+          type: string
+          description: Производитель устройства (например, LG, Samsung).
+        model:
+          type: string
+          description: Модель устройства.
+
+    AirConditionerFullInfo:
       type: object
       properties:
         airConditionerId:
@@ -351,7 +368,7 @@ components:
           description: Скорость обдува (низкая, средняя, высокая).
         status:
           type: string
-          enum: [ ON, OFF ]
+          enum: [ IS_ON, IS_OFF ]
           description: Текущий статус кондиционера.
         stateUpdatedAt:
           type: string

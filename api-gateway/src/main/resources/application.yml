@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes[0]:
+        id: air-conditioner-service
+        uri: localhost:8081
+      routes[1]:
+        id: coffee-machine-service
+        uri: localhost:8082
+      routes[2]:
+        id: electric-kettle-service
+        uri: localhost:8083
+      routes[3]:
+        id: service-discovery
+        uri: localhost:8761
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway.root.RouteDefinitionLocator: INFO
+    org.springframework.cloud.gateway: TRACE
+

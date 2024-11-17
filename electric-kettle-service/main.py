@@ -14,8 +14,24 @@ from auth import get_current_user_id
 from uuid import UUID
 from models import KettleCreate, KettleStateUpdate, KettleInfoUpdate
 from py_eureka_client.eureka_client import EurekaClient
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
+
+
+@app.on_event("startup")
+async def startup_event():
+    await register_with_eureka()
+    print("Application start")
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    await eureka_client.stop()
+    print("Application shutdown")
+
 
 # Конфигурация Eureka клиента
 eureka_client = EurekaClient(
@@ -28,14 +44,23 @@ eureka_client = EurekaClient(
 )
 
 
+async def register_with_eureka():
+    try:
+        await eureka_client.start()  # Используйте await
+        logging.info("Successfully registered to Eureka!")
+    except Exception as e:
+        logging.error(f"Failed to register with Eureka: {e}")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="localhost", port=8083)
+
+
 async def get_session() -> AsyncSession:
     async with AsyncSessionLocal() as session:
         yield session
-
-
-@app.on_event("startup")
-async def on_startup():
-    await init_db()
 
 
 @app.get("/electric_kettles")

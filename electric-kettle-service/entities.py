@@ -1,5 +1,5 @@
 import sqlalchemy as sa
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.types import Enum as SQLAEnum
 import uuid
@@ -34,6 +34,6 @@ class ElectricKettleInformation(Base):
 class Access(Base):
     __tablename__ = "user_access"
 
-    id = sa.Column(sa.Long, primary_key=True, autoincrement=True)
+    id = sa.Column(sa.BigInteger, primary_key=True, autoincrement=True)
     user_id = sa.Column(UUID(as_uuid=True), nullable=False)
     kettle_id = sa.Column(UUID(as_uuid=True), sa.ForeignKey("kettles.id"), nullable=False)
